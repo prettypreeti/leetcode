@@ -1,17 +1,17 @@
 class Solution {
     public boolean checkIfExist(int[] arr) {
-        // Arrays.sort(arr);
-        // int i=0;
-        // int j=arr.length-1;
+        HashMap<Integer,Integer> m=new HashMap<>();
+        int c=0;
         for(int i=0; i<arr.length; i++){
-            for(int j=0; j<arr.length; j++){
-            if(i!=j && arr[j]==2*arr[i]){
-                return true;
-            }}
-            
+            m.put(arr[i],i);
+            if(arr[i]==0)c++;
         }
-        return false ;
-        
+        if(c>1)return true;
+
+        for(int i=0; i<arr.length; i++){
+            if(m.containsKey(2*arr[i])&& arr[i]!=0)return true;
+        }
+        return false;
         
     }
 }
