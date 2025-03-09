@@ -7,10 +7,7 @@ class Solution {
             li.add(x);
         }
         Collections.sort(li,(a,b)->(m.get(a)==m.get(b))?b-a:m.get(a)-m.get(b));
-        for(int i=0; i<nums.length;i++){
-            nums[i]=li.get(i);
-        }
-        return nums;
+       return li.stream().mapToInt(i->i).toArray();
         
     }
 }
