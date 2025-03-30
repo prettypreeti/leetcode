@@ -1,29 +1,24 @@
 class Solution {
     public void setZeroes(int[][] matrix) {
-        int n=matrix.length;
-        int m=matrix[0].length;
-        int[][] arr=new int[n][m];
-        for(int i=0; i<n; i++){
-            for(int j=0; j<m; j++){
-              arr[i][j]=matrix[i][j];
-            }
-        }
-        for(int i=0; i<n; i++){
-            for(int j=0; j<m; j++){
+        int m=matrix.length;
+        int n=matrix[0].length;
+        int r[]= new int[m];
+        int c[]=new int[n];
+        for(int i=0; i<m; i++){
+            for(int j=0; j<n; j++){
                 if(matrix[i][j]==0){
-                    for(int k=0; k<m; k++){
-                        arr[i][k]=0;
-                    }
-                    for(int k=0; k<n; k++){
-                        arr[k][j]=0;
-                    }
+                    r[i]=1;
+                    c[j]=1;
                 }
             }
         }
-           for(int i=0; i<n; i++){
-            for(int j=0; j<m; j++){
-              matrix[i][j]=arr[i][j];
+         for(int i=0; i<m; i++){
+            for(int j=0; j<n; j++){
+                if(r[i]==1 || c[j]==1){
+                   matrix[i][j]=0;
+                }
             }
         }
+        
     }
 }
